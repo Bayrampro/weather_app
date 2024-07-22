@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Search History{% endblock %}
+
+{% block content %}
+    <div class="text-center mb-4">
+        <h1>Search History</h1>
+        <p class="lead">Here you can see all the cities you have searched for.</p>
+    </div>
+    {% if history %}
+        <ul class="list-group">
+            {% for entry in history %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ entry.city }}
+                    <span class="badge badge-primary badge-pill">{{ entry.timestamp }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            You have no search history.
+        </div>
+    {% endif %}
+{% endblock %}
